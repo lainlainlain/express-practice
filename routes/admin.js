@@ -1,19 +1,12 @@
 const express = require('express')
-const path = require('path')
+const path = require('path');
+const adminControllers = require('../controllers/product')
 
-const rootDir = require('../util/path')
-
-const router = express.Router()
+const router = express.Router();
 
 
-router.get("/add-product", (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
+router.get("/add-product", adminControllers.getAddProduct);
 
-});
-
-router.post("/add-product", (req, res, next) => {
-    console.log(req.body)
-    res.redirect('/')
-});
+router.post("/add-product", adminControllers.postAddProduct);
 
 module.exports = router;
